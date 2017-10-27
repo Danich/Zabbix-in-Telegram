@@ -180,11 +180,11 @@ class TelegramAPI:
                 chat = m["edited_message"]["chat"]
             if chat["type"] == self.type == "private":
                 if "username" in chat:
-                    if chat["username"] == name:
+                    if chat["username"].lower() == name.lower():
                         uid = chat["id"]
             if (chat["type"] == "group" or chat["type"] == "supergroup") and self.type == "group":
                 if "title" in chat:
-                    if chat["title"] == name.decode("utf-8"):
+                    if chat["title"].lower() == name.decode("utf-8").lower():
                         uid = chat["id"]
         return uid
 
